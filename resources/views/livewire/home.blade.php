@@ -8,7 +8,7 @@
             Você e outras pessoas poderão visualizar os imóveis anunciados e entrar em contato.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
-            <a href="/form" class="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 transition shadow-xl shadow-blue-200 group">
+            <a href="/login" class="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 transition shadow-xl shadow-blue-200 group">
                 Cadastrar Imóvel
                 <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />

@@ -1,5 +1,15 @@
 <div class="w-full min-h-screen bg-gray-100 py-8 px-4">
     <h1 class="text-3xl font-bold mb-8 text-gray-800 text-center">Dados Cadastrais</h1>
+    <div class="flex justify-end mb-4">
+        @auth
+            <div class="flex items-center">
+                <span class="text-gray-600 mr-2">Olá, {{ Auth::user()->name }}</span>
+                <a href="{{ route('logout') }}" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">Sair</a>
+            </div>
+        @else
+            <a href="{{ route('login') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Login</a>
+        @endauth
+    </div>
 
     <form method="post" wire:submit.prevent="create" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-12">
         <div>
