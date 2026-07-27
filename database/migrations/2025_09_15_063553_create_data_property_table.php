@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_property', function (Blueprint $table) {
+        Schema::create('data_properties', function (Blueprint $table) {
             $table->id();
             $table->foreignId('data_id')->constrained('data')->onDelete('cascade');
             $table->string('cep');
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_property');
+        Schema::dropIfExists('data_properties');
     }
 };
