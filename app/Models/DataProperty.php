@@ -16,6 +16,8 @@ class DataProperty extends Model
         'neighborhood',
         'complement',
         'data_id',
+        'state_id',
+        'city_id',
         'image_1',
         'image_2',
         'image_3',
@@ -31,5 +33,15 @@ class DataProperty extends Model
     public function data()
     {
         return $this->belongsTo(Data::class);
+    }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
     }
 }

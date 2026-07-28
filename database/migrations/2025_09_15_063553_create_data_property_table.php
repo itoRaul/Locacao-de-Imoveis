@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('number');
             $table->string('neighborhood');
             $table->string('complement')->nullable();
+            $table->foreignId('state_id')->constrained('states')->onDelete('cascade');
+            $table->foreignId('city_id')->constrained('cities')->onDelete('cascade');
 
             for ($i = 1; $i <= 10; $i++) {
                 $table->string("image_$i")->nullable();
