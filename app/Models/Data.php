@@ -10,6 +10,7 @@ class Data extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'fullname',
         'socialname',
         'cpf',
@@ -25,6 +26,7 @@ class Data extends Model
         'education_level_id',
         'gender_id',
         'nationality',
+        'state_id',
         'city_id',
     ];
 

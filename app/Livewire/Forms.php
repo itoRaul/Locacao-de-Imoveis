@@ -8,7 +8,10 @@ use App\Models\Data;
 use App\Models\MaritalStatus;
 use App\Models\EducationLevel;
 use App\Models\Gender;
+use App\Models\State;
+use App\Models\User;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth;
 
 class Forms extends Component
 {
@@ -32,6 +35,7 @@ class Forms extends Component
         'number' => 'required|string|max:10',
         'neighborhood' => 'required|string|max:100',
         'complement' => 'nullable|string|max:255',
+        'state_id' => 'required|exists:states,id',
     ];
 
     public string $fullname = '';
@@ -45,6 +49,8 @@ class Forms extends Component
     public ?string $nationality = 'Brasileira';
     public $cities = [];
     public ?int $city_id = null;
+    public $states = [];
+    public ?int $state_id = null;
     public string $cpf = '';
     public string $rg = '';
     public string $email = '';
@@ -59,10 +65,12 @@ class Forms extends Component
 
     public function mount($id = null)
     {
+        $user_id = Auth::id();
         if ($id) {
             $this->data_id = $id;
             $data = Data::find($this->data_id);
             if ($data) {
+                $this->user_id = $user_id;
                 $this->fullname = $data->fullname;
                 $this->socialname = $data->socialname;
                 $this->cpf = $data->cpf;
@@ -79,12 +87,20 @@ class Forms extends Component
                 $this->education_level_id = $data->education_level_id;
                 $this->gender_id = $data->gender_id;
                 $this->city_id = $data->city_id;
+                $this->state_id = $data->state_id;
             }
         }
         $this->maritalStatus = MaritalStatus::whereIn('status', [true, 1])->get();
         $this->educationLevels = EducationLevel::whereIn('status', [true, 1])->get();
         $this->genders = Gender::whereIn('status', [true, 1])->get();
-        $this->cities = City::whereIn('status', [true, 1])->get();
+        $this->states = State::whereIn('status', [true, 1])->get();
+        $this->cities = City::where('state_id', $this->state_id)->get();
+    }
+
+    public function updatedStateId($state_id)
+    {
+        $this->cities = City::where('state_id', $state_id)->get();
+        $this->city_id = null;
     }
 
     public function render()
@@ -99,10 +115,9 @@ class Forms extends Component
 
     public function create()
     {
-
         $this->validate();
 
-        Data::create($this->only([
+        $data = $this->only([
             'fullname',
             'socialname',
             'cpf',
@@ -112,6 +127,7 @@ class Forms extends Component
             'cep',
             'marital_status_id',
             'nationality',
+            'state_id',
             'city_id',
             'education_level_id',
             'gender_id',
@@ -119,7 +135,11 @@ class Forms extends Component
             'number',
             'neighborhood',
             'complement'
-        ]));
+        ]);
+
+        $data['user_id'] = Auth::id();
+
+        Data::create($data);
 
         $this->reset();
     }
@@ -140,6 +160,7 @@ class Forms extends Component
                 'phone',
                 'cep',
                 'marital_status_id',
+                'state_id',
                 'city_id',
                 'nationality',
                 'education_level_id',

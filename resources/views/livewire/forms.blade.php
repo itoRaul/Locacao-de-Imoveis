@@ -107,7 +107,17 @@
             @error('nationality') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
         </div>
         <div>
-            <label class="block text-gray-700 mb-1">Naturalidade</label>
+            <label class="block text-gray-700 mb-1">Estado</label>
+            <select wire:model.live="state_id" class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300">
+                <option value="">Selecione</option>
+                @foreach($states as $state)
+                    <option value="{{$state->id}}">{{$state->name}}</option>
+                @endforeach
+            </select>
+            @error('state_id') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+        </div>
+        <div>
+            <label class="block text-gray-700 mb-1">Cidade</label>
             <select wire:model="city_id" class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300">
                 <option value="">Selecione</option>
                 @foreach ($cities as $city)
