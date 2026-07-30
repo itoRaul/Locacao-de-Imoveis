@@ -97,7 +97,7 @@
                 class="w-full md:w-1/2 lg:w-1/3 mt-4 px-4 py-2 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition duration-200">
                 Editar
             </button>
-            <a href="/form" class="inline-block mt-4 text-blue-600 hover:underline">Voltar</a>
+            <a href="/dashboard-user" class="inline-block mt-4 text-blue-600 hover:underline">Voltar</a>
         </div>
     </form>
 </div>
