@@ -28,6 +28,7 @@ class Data extends Model
         'nationality',
         'state_id',
         'city_id',
+        'birthday_date',
     ];
 
     public function maritalStatus()

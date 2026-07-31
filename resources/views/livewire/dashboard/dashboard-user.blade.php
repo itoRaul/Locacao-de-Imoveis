@@ -11,6 +11,7 @@
                     <div><span class="font-semibold">Nome Social:</span> {{ $d->socialname }}</div>
                     <div><span class="font-semibold">CPF:</span> {{ $d->cpf }}</div>
                     <div><span class="font-semibold">RG:</span> {{ $d->rg }}</div>
+                    <div><span class="font-semibold">Data de Nascimento:</span> {{ \Carbon\Carbon::parse($d->birthday_date)->format('d/m/Y') }}</div>
                     <div><span class="font-semibold">Email:</span> {{ $d->email }}</div>
                     <div><span class="font-semibold">Telefone:</span> {{ $d->phone }}</div>
                     <div><span class="font-semibold">CEP:</span> {{ $d->cep }}</div>

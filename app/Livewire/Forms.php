@@ -36,6 +36,7 @@ class Forms extends Component
         'neighborhood' => 'required|string|max:100',
         'complement' => 'nullable|string|max:255',
         'state_id' => 'required|exists:states,id',
+        'birthday_date' => 'required|date',
     ];
 
     public string $fullname = '';
@@ -60,6 +61,7 @@ class Forms extends Component
     public string $number = '';
     public string $neighborhood = '';
     public string $complement = '';
+    public ?string $birthday_date = null;
 
     public ?int $data_id = null;
 
@@ -88,6 +90,7 @@ class Forms extends Component
                 $this->gender_id = $data->gender_id;
                 $this->city_id = $data->city_id;
                 $this->state_id = $data->state_id;
+                $this->birthday_date = $data->birthday_date;
             }
         }
         $this->maritalStatus = MaritalStatus::whereIn('status', [true, 1])->get();
@@ -134,7 +137,8 @@ class Forms extends Component
             'address',
             'number',
             'neighborhood',
-            'complement'
+            'complement',
+            'birthday_date'
         ]);
 
         $data['user_id'] = Auth::id();

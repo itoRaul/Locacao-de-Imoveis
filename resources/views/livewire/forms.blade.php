@@ -25,6 +25,11 @@
                 @error('rg') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
             </div>
             <div>
+                <label class="block text-gray-700 mb-1">Data de nascimento</label>
+                <input type="date" wire:model="birthday_date" class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300">
+                @error('birthday_date') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            </div>
+            <div>
                 <label class="block text-gray-700 mb-1">Email</label>
                 <input type="text" wire:model="email" class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300">
                 @error('email') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
